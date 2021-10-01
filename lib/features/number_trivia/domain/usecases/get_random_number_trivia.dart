@@ -1,6 +1,6 @@
-import 'package:clean_architecture_tdd/core/error/failure.dart';
-import 'package:clean_architecture_tdd/core/usecases/usecase.dart';
-import 'package:clean_architecture_tdd/features/number_trivia/domain/entities/number_trivia.dart';
+import '../../../../core/error/failure.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../entities/number_trivia.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
