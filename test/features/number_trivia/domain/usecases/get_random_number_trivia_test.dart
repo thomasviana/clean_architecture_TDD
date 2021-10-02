@@ -7,9 +7,8 @@ import 'package:mockito/mockito.dart';
 
 import 'package:clean_architecture_tdd/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:clean_architecture_tdd/features/number_trivia/domain/respositories/number_trivia_repository.dart';
-import 'package:clean_architecture_tdd/features/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
 
-import 'get_concrete_number_trivia_test.mocks.dart';
+import 'get_random_number_trivia_test.mocks.dart';
 
 @GenerateMocks([NumberTriviaRepository])
 void main() {
