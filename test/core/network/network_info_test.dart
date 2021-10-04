@@ -18,7 +18,7 @@ void main() {
   });
 
   group('isConnected', () {
-    test('should forward the caal to InternetConnectionChecker.hasConnection',
+    test('should forward the call to InternetConnectionChecker.hasConnection',
         () async {
       //arrange
       final tHasConnectionFuture = Future.value(true);

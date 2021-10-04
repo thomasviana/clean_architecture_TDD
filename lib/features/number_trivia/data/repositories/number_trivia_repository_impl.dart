@@ -23,10 +23,10 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
   });
 
   @override
-  Future<Either<Failure, NumberTrivia>>? getConcreteNumberTrivia(
+  Future<Either<Failure, NumberTrivia>> getConcreteNumberTrivia(
       int number) async {
     return await _getTrivia(() {
-      return remoteDataSource.getConcreteNumberTrivia(number);
+      return remoteDataSource.getConcreteNumberTrivia(number)!;
     });
   }
 
