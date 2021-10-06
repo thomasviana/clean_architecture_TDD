@@ -9,7 +9,7 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  internet_connection_checker: ^0.0.1+2
+  bloc_test: ^8.2.0
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0
   equatable: ^2.0.3
@@ -17,6 +17,7 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^7.3.0
   http: ^0.13.3
+  internet_connection_checker: ^0.0.1+2
   shared_preferences: ^2.0.8
 
 dev_dependencies:

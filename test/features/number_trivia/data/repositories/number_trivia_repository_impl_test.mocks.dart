@@ -32,9 +32,10 @@ class MockNetworkInfo extends _i1.Mock implements _i3.NetworkInfo {
   }
 
   @override
-  _i4.Future<bool> get isConnected =>
-      (super.noSuchMethod(Invocation.getter(#isConnected),
-          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
+  _i4.Future<bool> get isConnected => (super.noSuchMethod(
+      Invocation.getter(#isConnected),
+      returnValue: Future<bool>.value(false),
+      returnValueForMissingStub: Future<bool>.value(true)) as _i4.Future<bool>);
   @override
   String toString() => super.toString();
 }
@@ -49,13 +50,13 @@ class MockNumberTriviaRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.NumberTriviaModel> getConcreteNumberTrivia(int? number) =>
+  _i4.Future<_i2.NumberTriviaModel>? getConcreteNumberTrivia(int? number) =>
       (super.noSuchMethod(Invocation.method(#getConcreteNumberTrivia, [number]),
           returnValue:
               Future<_i2.NumberTriviaModel>.value(_FakeNumberTriviaModel_0()),
           returnValueForMissingStub: Future<_i2.NumberTriviaModel>.value(
               _FakeNumberTriviaModel_0())) as _i4
-          .Future<_i2.NumberTriviaModel>);
+          .Future<_i2.NumberTriviaModel>?);
   @override
   _i4.Future<_i2.NumberTriviaModel> getRandomNumberTrivia() =>
       (super.noSuchMethod(Invocation.method(#getRandomNumberTrivia, []),

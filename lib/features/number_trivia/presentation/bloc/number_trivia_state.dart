@@ -16,3 +16,9 @@ class Loaded extends NumberTriviaState {
 
   Loaded({required this.trivia});
 }
+
+class Error extends NumberTriviaState {
+  final String message;
+
+  Error({required this.message});
+}
