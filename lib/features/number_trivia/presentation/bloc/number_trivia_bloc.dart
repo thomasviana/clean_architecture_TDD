@@ -29,7 +29,7 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
     required this.getRandomNumberTrivia,
     required this.inputConverter,
   }) : super(Empty()) {
-    on<GetTriviaForConcreteNumber>((event, emit) {
+    on<GetTriviaForConcreteNumber>((event, emit) async {
       final inputEither =
           inputConverter.stringToUnsignedInteger(event.numberString);
       inputEither.fold((failure) {
@@ -38,33 +38,40 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
         emit(Loading());
         final failureOrTrivia =
             await getConcreteNumberTrivia(Params(number: integer));
-        _eitherLoadedOrErrorState(failureOrTrivia!);
+        failureOrTrivia!.fold((failure) async {
+          emit(Error(message: _mapFailureToMessage(failure)));
+        }, (trivia) {
+          emit(Loaded(trivia: trivia));
+        });
       });
     });
     on<GetTriviaForRandomNumber>((event, emit) async {
       emit(Loading());
       final failureOrTrivia = await getRandomNumberTrivia(NoParams());
-      _eitherLoadedOrErrorState(failureOrTrivia!);
+      failureOrTrivia!.fold((failure) {
+        emit(Error(message: _mapFailureToMessage(failure)));
+      }, (trivia) {
+        emit(Loaded(trivia: trivia));
+      });
     });
   }
 
-  Stream<NumberTriviaState> _eitherLoadedOrErrorState(
-      Either<Failure, NumberTrivia> failureOrTrivia) async* {
-    failureOrTrivia.fold((failure) {
-      emit(Error(message: _mapFailureToMessage(failure)));
-    }, (trivia) {
-      emit(Loaded(trivia: trivia));
-    });
-  }
+  // Stream<NumberTriviaState> _eitherLoadedOrErrorState(
+  //     Either<Failure, NumberTrivia> failureOrTrivia) async* {
+  //   failureOrTrivia.fold((failure) {
+  //     emit(Error(message: _mapFailureToMessage(failure)));
+  //   }, (trivia) {
+  //     emit(Loaded(trivia: trivia));
+  //   });
+}
 
-  String _mapFailureToMessage(Failure failure) {
-    switch (failure.runtimeType) {
-      case ServerFailure:
-        return SERVER_FAILURE_MESSAGE;
-      case CacheFailure:
-        return CACHE_FAILURE_MESSAGE;
-      default:
-        return 'Unexpected error';
-    }
+String _mapFailureToMessage(Failure failure) {
+  switch (failure.runtimeType) {
+    case ServerFailure:
+      return SERVER_FAILURE_MESSAGE;
+    case CacheFailure:
+      return CACHE_FAILURE_MESSAGE;
+    default:
+      return 'Unexpected error';
   }
 }

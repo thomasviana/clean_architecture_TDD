@@ -1,9 +1,9 @@
 import 'dart:convert';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../../../core/error/exceptions.dart';
 import '../models/number_trivia_model.dart';
-import '../../domain/entities/number_trivia.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class NumberTriviaLocalDataSource {
   Future<NumberTriviaModel>? getLastNumberTrivia();
