@@ -38,9 +38,9 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
         emit(Loading());
         final failureOrTrivia =
             await getConcreteNumberTrivia(Params(number: integer));
-        failureOrTrivia!.fold((failure) async {
+        failureOrTrivia!.fold((failure) {
           emit(Error(message: _mapFailureToMessage(failure)));
-        }, (trivia) async {
+        }, (trivia) {
           emit(Loaded(trivia: trivia));
         });
       });
