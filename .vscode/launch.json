@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "iPhone 12 Pro Max",
+            "name": "iPhone 13",
             "type": "dart",
             "request": "launch",
-            "deviceId": "007153FC-9053-4A68-851A-20D1B6013518"
+            "deviceId": "EFB99DE9-5209-4446-A1CF-A4D4F7E7CF4F"
         },
         {
             "name": "Dart: Run all Tests",
