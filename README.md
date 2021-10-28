@@ -1,6 +1,6 @@
-# clean_architecture_tdd
+# clean_architecture_tdd Reso Coder (Null-safety)
 
-A new Flutter project.
+(Null-safety) This is a Number Trivia app example using clean architecture TDD and flutter_bloc 7.3.0
 
 ## Getting Started
 
